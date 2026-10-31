@@ -58,7 +58,14 @@ with gr.Blocks(title="LLM Arena") as demo:
     up_b.click(lambda: vote("👍 Model B"), outputs=verdict)
     down_b.click(lambda: vote("👎 Model B"), outputs=verdict)
 
-demo.launch(share=True)   # → local + public link 🎉
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+
+    demo.launch(
+        server_name="0.0.0.0",
+        server_port=port,
+        share=False
+    )  # → render deployment + public link 🎉   # → local + public link 🎉
 
 
 
